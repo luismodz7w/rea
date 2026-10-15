@@ -5,17 +5,13 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := matveuxxx
 LOCAL_SRC_FILES := libmatveuxxx.cpp
 
-# Compiler flags
-LOCAL_CFLAGS := -Wall -O2 -fPIC -fvisibility=hidden
-LOCAL_CPPFLAGS := -std=c++17 -fexceptions -frtti -Wall -O2
+LOCAL_CFLAGS := -Wall -O0 -fPIC
+LOCAL_CPPFLAGS := -std=c++17 -fexceptions -frtti
 
-# Include directories
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../include
+LOCAL_C_INCLUDES := $(LOCAL_PATH)
 
-# Libraries to link
-LOCAL_LDLIBS := -llog -landroid -lGLESv3 -lEGL -lm -ldl -lc++_shared
-
-# Enable debugging symbols
-LOCAL_LDFLAGS := -Wl,--build-id=sha1
+# Tentar linkar bibliotecas do NDK (mesmo que dinamicamente)
+LOCAL_LDLIBS := -llog -landroid -lGLESv3 -lEGL -lm -ldl
+LOCAL_STATIC_LIBRARIES := c++_static
 
 include $(BUILD_SHARED_LIBRARY)
